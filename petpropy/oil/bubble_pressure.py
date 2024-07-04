@@ -26,7 +26,6 @@ You should have received a copy of the GNU Lesser General Public License
 along with My Python Library. If not, see <http://www.gnu.org/licenses/>.
 
 @author: Ever J. Ramos I.
-@email: everramosisla@gmail.com
 """
 
 def standing(R_sb: float, gamma_gas: float, T: float|int, gamma_api: float|int, *, y_N2: float=0, y_CO2: float=0, y_H2S: float=0) -> float:
