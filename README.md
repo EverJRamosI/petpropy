@@ -1,12 +1,10 @@
 <h1 align="center">
-<img src="docs/images/PETPROPY.png" width="250">
+<img src="https://raw.githubusercontent.com/EverJRamosI/petpropy/main/docs/images/PETPROPY.png" width="250">
 </h1>
 
-![stars]()
-![forks]()
-![tag]()
-![issues]()
-![bower]()
+![stars](https://img.shields.io/github/stars/EverJRamosI/petpropy)
+![forks](https://img.shields.io/github/forks/EverJRamosI/petpropy)
+
 
 # PetProPy 
 
@@ -22,7 +20,7 @@ This package is useful for determining the Physical Properties of Gas, Oil, and 
 - [License](#license)
 
 ## Installation
-You can install [PetProPy]() using pip:
+You can install [PetProPy](https://github.com/EverJRamosI/petpropy/tree/main/petpropy) using pip:
 ```bash
 pip install petpropy
 ```
@@ -56,7 +54,7 @@ plt.show()
  1.10544521 1.16613807 1.22668188 1.28700724 1.34707163 1.40684971
  1.46632734 1.52549774]
 ```
-![](docs/images/output.png)
+![Z Factor](https://raw.githubusercontent.com/EverJRamosI/petpropy/main/docs/images/output.png)
 > Pressures vs Z Factor (***[FOR MORE INFORMATION](book_test.ipynb)***)
 
 ## Theory
@@ -180,7 +178,7 @@ pip install -r requirements.txt
 ```
 
 ## License
-This project is licensed under the GNU Lesser General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the GNU Lesser General Public License v3.0 - see the [LICENSE](https://github.com/EverJRamosI/petpropy/blob/main/LICENSE) file for details.
 
 ## API Documentation
-For detailed API documentation, please refer to the [official documentation]().
+For detailed API documentation, please refer to the [official documentation](https://github.com/EverJRamosI/petpropy).
