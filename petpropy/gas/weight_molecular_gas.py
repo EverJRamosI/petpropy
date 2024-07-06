@@ -33,7 +33,7 @@ def gas_weight_molecular(m_C7: float=0) -> float:
     #### Returns:
         m_g (float): Weight Molecular Gas [lb/lb-mol]
     """    
-    m_gi = {'C1': 16.043, 'C2': 30.070, 'C3': 44.097, 'n-C4': 58.124, 'i-C4': 58.124, 'n-C5': 72.151, 'i-C5': 72.151, 'n-C6': 86.178, 'n-C7': 100.205, 'n-C8': 114.232, 'n-C9': 128.259, 'n-C10': 142.286, 'N2+O2': 28.963, 'CO2': 44.010, 'He': 4.003, 'H2S': 34.076, 'N2': 28.013, 'O2': 31.999, 'C7+': m_C7}
+    m_gi = {'C1': 16.043, 'C2': 30.070, 'C3': 44.097, 'n-C4': 58.124, 'i-C4': 58.124, 'n-C5': 72.151, 'i-C5': 72.151, 'C6': 86.178, 'C7': 100.205, 'C8': 114.232, 'C9': 128.259, 'C10': 142.286, 'N2+O2': 28.963, 'CO2': 44.010, 'He': 4.003, 'H2S': 34.076, 'N2': 28.013, 'O2': 31.999, 'C7+': m_C7}
     components = list(m_gi.keys())
     
     print(f'Available mix components: {components} \nComponentes de la mezcla disponibles: {components}')

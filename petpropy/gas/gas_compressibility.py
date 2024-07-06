@@ -143,4 +143,23 @@ def gopal(P: float, T: float, Ppc: float, Tpc: float, z: float) -> float:
 
 
 
+# import numpy as np
+# import matplotlib.pyplot as plt
+# from gas_compressibility_factor import dranchuk_abou_kassem
 
+# pressures = np.arange(500, 10500, 500)
+# temperature = 180 + 460
+# temp_critica = 485.9
+# pres_critica = 680
+
+# z_factor = dranchuk_abou_kassem(pressures, temperature, pres_critica, temp_critica)
+
+# #cg = gopal(pressures, temperature, pres_critica, temp_critica, z_factor)
+# #cg = brill_beggs(pressures, temperature, pres_critica, temp_critica, z_factor)
+# cg = papay(pressures, temperature, pres_critica, temp_critica, z_factor)
+
+# print(z_factor)
+# print(cg)
+
+# plt.plot(pressures, cg)
+# plt.show()

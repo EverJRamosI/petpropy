@@ -45,7 +45,7 @@ def mathews_roland_correlation_c7(m_C7: float|int, gamma_c7: float) -> dict[str,
     
     Ppc_C7 = 1188 - 431*log10((m_C7 - 61.1)) + (2319 - 852*log10((m_C7 - 53.71)))*(gamma_c7 - 0.8)
     Tpc_C7 = 608 + 364*log10((m_C7 - 71.2)) + ((2450*log10(m_C7)) - 3800)*(log10(gamma_c7))
-    return {"PpcC7=": round(Ppc_C7, 5), "TpcC7=": round(Tpc_C7, 5)}
+    return {"PpcC7": round(Ppc_C7, 5), "TpcC7": round(Tpc_C7, 5)}
 
 def sutton(gamma_gas: float, *, yCO2: float=0, yH2S: float=0, yN2: float=0) -> list[float]:
     """These are equations for determining Ppc and Tpc for Sutton R.P.\n
@@ -84,8 +84,8 @@ def kay(Ppc7: float|int=0, Tpc7: float|int=0) -> dict[str, float]:
     #### Returns:
         {Ppc: value, Tpc: value} (dict[str, float]): Pressure and Temperature pseudocritical [psia, oR]
     """
-    P_pci = {'C1': 667.8, 'C2': 707.8, 'C3': 616.3, 'n-C4': 550.7, 'i-C4': 529.1, 'n-C5': 488.6, 'i-C5': 490.4, 'n-C6': 436.9, 'n-C7': 396.9, 'n-C8': 360.6, 'n-C9': 332.0, 'n-C10': 304.0, 'N2+O2': 546.9, 'CO2': 1071.0, 'He': 32.99, 'H2S': 1306.0, 'N2': 493.0, 'O2': 731.4, 'C7+': Ppc7}
-    T_pci = {'C1': 343.37, 'C2': 550.09, 'C3': 666.01, 'n-C4': 765.55, 'i-C4': 734.98, 'n-C5': 845.70, 'i-C5': 829.10, 'n-C6': 913.70, 'n-C7': 972.80, 'n-C8': 1024.22, 'n-C9': 1070.68, 'n-C10': 1112.10, 'N2+O2': 238.69, 'CO2': 547.90, 'He': 9.69, 'H2S': 672.70, 'N2': 227.60, 'O2': 278.57, 'C7+': Tpc7}
+    P_pci = {'C1': 667.8, 'C2': 707.8, 'C3': 616.3, 'n-C4': 550.7, 'i-C4': 529.1, 'n-C5': 488.6, 'i-C5': 490.4, 'C6': 436.9, 'C7': 396.9, 'C8': 360.6, 'C9': 332.0, 'C10': 304.0, 'N2+O2': 546.9, 'CO2': 1071.0, 'He': 32.99, 'H2S': 1306.0, 'N2': 493.0, 'O2': 731.4, 'C7+': Ppc7}
+    T_pci = {'C1': 343.37, 'C2': 550.09, 'C3': 666.01, 'n-C4': 765.55, 'i-C4': 734.98, 'n-C5': 845.70, 'i-C5': 829.10, 'C6': 913.70, 'C7': 972.80, 'C8': 1024.22, 'C9': 1070.68, 'C10': 1112.10, 'N2+O2': 238.69, 'CO2': 547.90, 'He': 9.69, 'H2S': 672.70, 'N2': 227.60, 'O2': 278.57, 'C7+': Tpc7}
     
     components = list(P_pci.keys())
     print(f'Available mix componentes: {components}\nComponentes de la mezcla disponibles: {components}')
@@ -99,7 +99,7 @@ def kay(Ppc7: float|int=0, Tpc7: float|int=0) -> dict[str, float]:
     Ppc_gas = sum(P_pci[componente] * y_gi[componente] for componente in comp_mix)
     Tpc_gas = sum(T_pci[componente] * y_gi[componente] for componente in comp_mix)
     
-    return {'Ppc=': Ppc_gas, 'Tpc=': Tpc_gas}
+    return {'Ppc': Ppc_gas, 'Tpc': Tpc_gas}
 
 def kay_df(df_data: pd.DataFrame, Ppc7: float=0, Tpc7: float=0) -> dict[str, float]:
     """These are equations for determining Pcp and Tpc for a method of the Kay W.D.\n
@@ -128,7 +128,7 @@ def kay_df(df_data: pd.DataFrame, Ppc7: float=0, Tpc7: float=0) -> dict[str, flo
     Ppc_gas = sum(P_pci[componente] * y_gi[componente] for componente in comp_mix)
     Tpc_gas = sum(T_pci[componente] * y_gi[componente] for componente in comp_mix)
     
-    return {'Ppc=': Ppc_gas, 'Tpc=': Tpc_gas}
+    return {'Ppc': Ppc_gas, 'Tpc': Tpc_gas}
 
 def stewart(Ppc7: float=0, Tpc7: float=0) -> dict[str, float]:
     """These are equations for determining Pcp and Tpc for a method of the Stewart W.F. Burkhadt S.F. & Voo, D.\n
@@ -141,8 +141,8 @@ def stewart(Ppc7: float=0, Tpc7: float=0) -> dict[str, float]:
     #### Returns:
         {Ppc: value, Tpc: value} (dict[str, float]): Pressure and Temperature pseudocritical [psia, oR]
     """    
-    P_pci = {'C1': 667.8, 'C2': 707.8, 'C3': 616.3, 'n-C4': 550.7, 'i-C4': 529.1, 'n-C5': 488.6, 'i-C5': 490.4, 'n-C6': 436.9, 'n-C7': 396.9, 'n-C8': 360.6, 'n-C9': 332.0, 'n-C10': 304.0, 'N2+O2': 546.9, 'CO2': 1071.0, 'He': 32.99, 'H2S': 1306.0, 'N2': 493.0, 'O2': 731.4, 'C7+': Ppc7}
-    T_pci = {'C1': 343.37, 'C2': 550.09, 'C3': 666.01, 'n-C4': 765.55, 'i-C4': 734.98, 'n-C5': 845.70, 'i-C5': 829.10, 'n-C6': 913.70, 'n-C7': 972.80, 'n-C8': 1024.22, 'n-C9': 1070.68, 'n-C10': 1112.10, 'N2+O2': 238.69, 'CO2': 547.90, 'He': 9.69, 'H2S': 672.70, 'N2': 227.60, 'O2': 278.57, 'C7+': Tpc7}
+    P_pci = {'C1': 667.8, 'C2': 707.8, 'C3': 616.3, 'n-C4': 550.7, 'i-C4': 529.1, 'n-C5': 488.6, 'i-C5': 490.4, 'C6': 436.9, 'C7': 396.9, 'C8': 360.6, 'C9': 332.0, 'C10': 304.0, 'N2+O2': 546.9, 'CO2': 1071.0, 'He': 32.99, 'H2S': 1306.0, 'N2': 493.0, 'O2': 731.4, 'C7+': Ppc7}
+    T_pci = {'C1': 343.37, 'C2': 550.09, 'C3': 666.01, 'n-C4': 765.55, 'i-C4': 734.98, 'n-C5': 845.70, 'i-C5': 829.10, 'C6': 913.70, 'C7': 972.80, 'C8': 1024.22, 'C9': 1070.68, 'C10': 1112.10, 'N2+O2': 238.69, 'CO2': 547.90, 'He': 9.69, 'H2S': 672.70, 'N2': 227.60, 'O2': 278.57, 'C7+': Tpc7}
     
     components = list(P_pci.keys())
     print(f'Available mix componentes: {components}\nComponentes de la mezcla disponibles: {components}')
@@ -159,7 +159,7 @@ def stewart(Ppc7: float=0, Tpc7: float=0) -> dict[str, float]:
     Tpc_gas = round((K**2)/J, 5)
     Ppc_gas = round(Tpc_gas/J, 5)
     
-    return {'Ppc=': Ppc_gas, 'Tpc=': Tpc_gas}
+    return {'Ppc': Ppc_gas, 'Tpc': Tpc_gas}
 
 def stewart_df(df_data: pd.DataFrame, Ppc7: float=0, Tpc7: float=0) -> dict[str, float]:
     """These are equations for determining Pcp and Tpc for a method of the Stewart W.F. Burkhadt S.F. & Voo, D for determining Ppc and Tpc.\n
@@ -190,7 +190,7 @@ def stewart_df(df_data: pd.DataFrame, Ppc7: float=0, Tpc7: float=0) -> dict[str,
     Tpc_gas = round((K**2)/J, 5)
     Ppc_gas = round(Tpc_gas/J, 5)
     
-    return {'Ppc=': Ppc_gas, 'Tpc=': Tpc_gas}
+    return {'Ppc': Ppc_gas, 'Tpc': Tpc_gas}
 
 def brown_katz(gamma_gas: float) -> dict[str, float]:
     """These are equations for determining Pcp and Tpc for a method of the Brown G.G., Katz D.L., Oberfell G.G. & Alden R.C.\n
@@ -222,7 +222,7 @@ def brown_katz(gamma_gas: float) -> dict[str, float]:
     Ppc_gas = round((1 - y_impurities.get('yN2') - y_impurities.get('yCO2') - y_impurities.get('yH2S'))*Ppc_hc + 493*y_impurities.get('yN2') + 1071*y_impurities.get('yCO2') + 1306*y_impurities.get('yH2S'), 5)
     Tpc_gas = round((1 - y_impurities.get('yN2') - y_impurities.get('yCO2') - y_impurities.get('yH2S'))*Tpc_hc + 227*y_impurities.get('yN2') + 548*y_impurities.get('yCO2') + 672*y_impurities.get('yH2S'), 5)
     
-    return {'Ppc=': Ppc_gas, 'Tpc=': Tpc_gas}
+    return {'Ppc': Ppc_gas, 'Tpc': Tpc_gas}
 
 def brown_katz_grv(gamma_gas: float, *, yCO2: float=0, yH2S: float=0, yN2: float=0, type_gas: bool=True) -> list[float]:
     """These are equations for determining Pcp and Tpc for a method of the Brown G.G., Katz D.L., Oberfell G.G. & Alden R.C.\n
@@ -293,7 +293,7 @@ def brown_katz_df(df_data: pd.DataFrame, gamma_gas: float) -> dict[str, float]:
     Ppc_gas = round((1 - y_impurities.get('N2') - y_impurities.get('CO2') - y_impurities.get('H2S'))*Ppc_hc + 493*y_impurities.get('N2') + 1071*y_impurities.get('CO2') + 1306*y_impurities.get('H2S'), 5)
     Tpc_gas = round((1 - y_impurities.get('N2') - y_impurities.get('CO2') - y_impurities.get('H2S'))*Tpc_hc + 227*y_impurities.get('N2') + 548*y_impurities.get('CO2') + 672*y_impurities.get('H2S'), 5)
         
-    return {'Ppc=': Ppc_gas, 'Tpc=': Tpc_gas}
+    return {'Ppc': Ppc_gas, 'Tpc': Tpc_gas}
 
 # if __name__ == '__main__':
 #     pass
