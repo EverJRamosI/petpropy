@@ -45,6 +45,7 @@ def mathews_roland_correlation_c7(m_C7: float|int, gamma_c7: float) -> dict[str,
     
     Ppc_C7 = 1188 - 431*log10((m_C7 - 61.1)) + (2319 - 852*log10((m_C7 - 53.71)))*(gamma_c7 - 0.8)
     Tpc_C7 = 608 + 364*log10((m_C7 - 71.2)) + ((2450*log10(m_C7)) - 3800)*(log10(gamma_c7))
+    
     return {"PpcC7": round(Ppc_C7, 5), "TpcC7": round(Tpc_C7, 5)}
 
 def sutton(gamma_gas: float, *, yCO2: float=0, yH2S: float=0, yN2: float=0) -> list[float]:
@@ -88,11 +89,11 @@ def kay(Ppc7: float|int=0, Tpc7: float|int=0) -> dict[str, float]:
     T_pci = {'C1': 343.37, 'C2': 550.09, 'C3': 666.01, 'n-C4': 765.55, 'i-C4': 734.98, 'n-C5': 845.70, 'i-C5': 829.10, 'C6': 913.70, 'C7': 972.80, 'C8': 1024.22, 'C9': 1070.68, 'C10': 1112.10, 'N2+O2': 238.69, 'CO2': 547.90, 'He': 9.69, 'H2S': 672.70, 'N2': 227.60, 'O2': 278.57, 'C7+': Tpc7}
     
     components = list(P_pci.keys())
-    print(f'Available mix componentes: {components}\nComponentes de la mezcla disponibles: {components}')
+    print(f'Available mix componentes: {components}')
     
-    comp_mix= [comp.strip() for comp in input('Enter the components of the mixture separated by commas: \nIngrese los componentes de la mezcla separados por coma: ').split(',')]
+    comp_mix= [comp.strip() for comp in input('Enter the components of the mixture separated by commas: ').split(',')]
     
-    fractions = [float(fraccion.strip()) for fraccion in input(f'Enter the fractions of the components according to order {comp_mix} and separated by comma\nIntroduzca las fracciones de los componentes según el orden {comp_mix} y separado por comas: ').split(',')]
+    fractions = [float(fraccion.strip()) for fraccion in input(f'Enter the fractions of the components according to order {comp_mix} and separated by comma: ').split(',')]
     
     y_gi = dict(zip(comp_mix, fractions))
     
@@ -145,11 +146,11 @@ def stewart(Ppc7: float=0, Tpc7: float=0) -> dict[str, float]:
     T_pci = {'C1': 343.37, 'C2': 550.09, 'C3': 666.01, 'n-C4': 765.55, 'i-C4': 734.98, 'n-C5': 845.70, 'i-C5': 829.10, 'C6': 913.70, 'C7': 972.80, 'C8': 1024.22, 'C9': 1070.68, 'C10': 1112.10, 'N2+O2': 238.69, 'CO2': 547.90, 'He': 9.69, 'H2S': 672.70, 'N2': 227.60, 'O2': 278.57, 'C7+': Tpc7}
     
     components = list(P_pci.keys())
-    print(f'Available mix componentes: {components}\nComponentes de la mezcla disponibles: {components}')
+    print(f'Available mix componentes: {components}')
     
-    comp_mix= [comp.strip() for comp in input('Enter the components of the mixture separated by commas: \nIngrese los componentes de la mezcla separados por coma: ').split(',')]
+    comp_mix= [comp.strip() for comp in input('Enter the components of the mixture separated by commas: ').split(',')]
     
-    fractions = [float(fraccion.strip()) for fraccion in input(f'Enter the fractions of the components according to order {comp_mix} and separated by comma\nIntroduzca las fracciones de los componentes según el orden {comp_mix} y separado por comas: ').split(',')]
+    fractions = [float(fraccion.strip()) for fraccion in input(f'Enter the fractions of the components according to order {comp_mix} and separated by comma: ').split(',')]
     
     y_gi = dict(zip(comp_mix, fractions))
     
@@ -204,13 +205,13 @@ def brown_katz(gamma_gas: float) -> dict[str, float]:
     y_impurities = {'yN2': 0, 'yCO2': 0, 'yH2S': 0}
     y_impu_i = list(y_impurities.keys())
     
-    f_impurity = [float(imp.strip()) for imp in input(f'Enter the following impurities {y_impu_i} in decimals in the corresponding order and separated by a comma (if you do not have impurities, enter zero [0])\nIngrese las siguiente impurezas {y_impu_i} en decimales en el orden correspondiente y separados por una coma (si no tiene una impureza coloque cero [0]): ').split(',')]
+    f_impurity = [float(imp.strip()) for imp in input(f'Enter the following impurities {y_impu_i} in decimals in the corresponding order and separated by a comma (if you do not have impurities, enter zero [0]): ').split(',')]
     
     y_impurities = dict(zip(y_impu_i, f_impurity))
     
     gamma_mg_hc = (gamma_gas - 0.967*y_impurities.get('yN2') - 1.52*y_impurities.get('yCO2') - 1.18*y_impurities.get('yH2S')) / (1 - y_impurities.get('yN2') - y_impurities.get('yCO2') - y_impurities.get('yH2S'))
 
-    type_gas = input('Is the type of gas Condensed Gas? [Y/N]: \n¿El tipo de gas qué tiene es Gas Condensado? [Y/N]: ').upper()
+    type_gas = input('Is the type of gas Condensed Gas? [Y/N]: ').upper()
     
     if type_gas == 'Y':  
         Ppc_hc = 706 - 51.7*gamma_mg_hc - 11.1*(gamma_mg_hc**2)
@@ -281,7 +282,7 @@ def brown_katz_df(df_data: pd.DataFrame, gamma_gas: float) -> dict[str, float]:
     
     gamma_mg_hc = (gamma_gas - 0.967*y_impurities.get('N2') - 1.52*y_impurities.get('CO2') - 1.18*y_impurities.get('H2S')) / (1 - y_impurities.get('N2') - y_impurities.get('CO2') - y_impurities.get('H2S'))
     
-    type_gas = input('Is the type of gas Condensed Gas? [Y/N]: \n¿El tipo de gas qué tiene es Gas Condensado? [Y/N]: ').upper()
+    type_gas = input('Is the type of gas Condensed Gas? [Y/N]: ').upper()
     
     if type_gas == 'Y':  
         Ppc_hc = 706 - 51.7*gamma_mg_hc - 11.1*(gamma_mg_hc**2)

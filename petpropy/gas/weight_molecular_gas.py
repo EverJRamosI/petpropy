@@ -36,9 +36,9 @@ def gas_weight_molecular(m_C7: float=0) -> float:
     m_gi = {'C1': 16.043, 'C2': 30.070, 'C3': 44.097, 'n-C4': 58.124, 'i-C4': 58.124, 'n-C5': 72.151, 'i-C5': 72.151, 'C6': 86.178, 'C7': 100.205, 'C8': 114.232, 'C9': 128.259, 'C10': 142.286, 'N2+O2': 28.963, 'CO2': 44.010, 'He': 4.003, 'H2S': 34.076, 'N2': 28.013, 'O2': 31.999, 'C7+': m_C7}
     components = list(m_gi.keys())
     
-    print(f'Available mix components: {components} \nComponentes de la mezcla disponibles: {components}')
-    comp_mix = [comp.strip() for comp in input('Enter the components of the mixture separated by commas\nIngrese los componentes de la mezcla separados por coma: ').split(',')]
-    fractions = [float(fraccion.strip()) for fraccion in input(f'Entes the fractiones of the components in order {comp_mix} and separated by commas\nIntroduzca las fracciones de los componentes según el orden {comp_mix} y separados por comas: ').split(',')]
+    print(f'Available mix components: {components}')
+    comp_mix = [comp.strip() for comp in input('Enter the components of the mixture separated by commas: ').split(',')]
+    fractions = [float(fraccion.strip()) for fraccion in input(f'Enter the fractions of the components in order {comp_mix} and separated by commas: ').split(',')]
     
     y_gi = dict(zip(comp_mix, fractions))
     
