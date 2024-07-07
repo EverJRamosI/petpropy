@@ -4,6 +4,9 @@
 
 ![stars](https://img.shields.io/github/stars/EverJRamosI/petpropy)
 ![forks](https://img.shields.io/github/forks/EverJRamosI/petpropy)
+![watchers](https://img.shields.io/github/watchers/EverJRamosI/petpropy)
+![license](https://img.shields.io/github/license/EverJRamosI/petpropy)
+![issues](https://img.shields.io/github/issues/EverJRamosI/petpropy)
 
 
 # PetProPy 
@@ -55,7 +58,7 @@ plt.show()
  1.46632734 1.52549774]
 ```
 ![Z Factor](https://raw.githubusercontent.com/EverJRamosI/petpropy/main/docs/images/output.png)
-> Pressures vs Z Factor (***[FOR MORE INFORMATION](book_test.ipynb)***)
+> Pressures vs Z Factor (***[FOR MORE INFORMATION](https://github.com/EverJRamosI/petpropy/tree/main/tests)***)
 
 ## Theory
 In the analysis of reservoir behavior, calculation of reserves and equipment design, knowledge of the physical properties of fluids is required.
