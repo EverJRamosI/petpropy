@@ -55,7 +55,7 @@ def vazquez_beggs(P: float|int, T: float|int, gamma_api: float|int, gamma_gas: f
     else:
         co = ((-1433) + (5*Rs) + (17.2*(T-460)) - (1180*gamma_gas) + (12.61*gamma_api)) / (P*(10**5))
     
-    return co
+    return abs(co)
 
 @vectorize_decorator
 def petrosky_farshad(P: float|int, T: float|int, gamma_api: float|int, gamma_gas: float, Rs: float) -> float:
@@ -73,7 +73,7 @@ def petrosky_farshad(P: float|int, T: float|int, gamma_api: float|int, gamma_gas
     """    
     co = (1.705e-7) * (Rs**0.69357) * (gamma_gas**0.1885) * (gamma_api**0.3272) * ((T-460)**0.6729) * (P**(-0.5906))
     
-    return co
+    return abs(co)
 
 @vectorize_decorator
 def kartoatmodjo_schmidt(P: float|int, T: float|int, gamma_api: float|int, gamma_gas: float, Rs: float, *, P_sp: float=0, T_sp: float=0) -> float:
@@ -99,7 +99,7 @@ def kartoatmodjo_schmidt(P: float|int, T: float|int, gamma_api: float|int, gamma
     else:
         co = (6.8257 * (Rs**0.5002) * (gamma_api**0.3613) * ((T-460)**0.76606) * (gamma_gas**0.35505)) / (P*(10**6))
     
-    return co
+    return abs(co)
 
 @vectorize_decorator
 def maccain_rollins_villena(P: float|int, T: float|int, gamma_api: float|int, gamma_gas: float, *, Rs: float=0, Pb: float=0) -> float:
@@ -128,7 +128,7 @@ def maccain_rollins_villena(P: float|int, T: float|int, gamma_api: float|int, ga
         A = (-7.573) - (1.450*log(P)) - (0.383*log(Pb)) + (1.402*log(T)) + (0.256*log(gamma_api)) + (0.449*log(Rs))
         co_b = exp(A)
         
-    return co_b
+    return abs(co_b)
 
 
 

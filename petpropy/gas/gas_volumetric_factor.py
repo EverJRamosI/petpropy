@@ -46,7 +46,7 @@ def B_g(P: float|int, T: float|int, z: float, *, units: bool=False) -> float:
     else:
         Bg = 0.02827 * ((z*T) / P)
     
-    return round(Bg, 7)
+    return Bg
 
 @vectorize_decorator
 def E_g(P: float|int=None, T: float|int=None, z: float=None, *, Bg: float=None, units: bool=False) -> float:
@@ -71,7 +71,7 @@ def E_g(P: float|int=None, T: float|int=None, z: float=None, *, Bg: float=None, 
         else:
             Eg = 35.37 * (P/(z*T))
     
-    return round(Eg, 5)
+    return Eg
 
 
 # import matplotlib.pyplot as plt

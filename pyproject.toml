@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "petpropy"
-version = "1.0.3"
+version = "1.0.4"
 license = {file = "LICENSE"}
 authors = [
-    {name = "Ever J. Ramos I.", email = "everramosisla@gmail.com"}
+    {name = "Ever J. Ramos I."}
 ]
 description = "Calculator package of physical properties of Gas, Oil, and Water in Python."
 readme = "README.md"
@@ -26,3 +26,4 @@ dependencies = [
 [project.urls]
 "Homepage" = "https://github.com/EverJRamosI/petpropy"
 "Bug Reports" = "https://github.com/EverJRamosI/petpropy/issues"
+"Contact" = "https://www.linkedin.com/in/everjramosi/"

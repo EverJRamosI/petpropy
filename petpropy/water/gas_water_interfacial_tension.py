@@ -46,7 +46,10 @@ def jennings_newman(P: float|int, T: float|int) -> float:
     
     sigma_gw = A + (B*P) + (C*(P**2))
     
-    return round(sigma_gw, 7)
+    if sigma_gw < 1:
+        sigma_gw = 1
+    
+    return sigma_gw
 
 #ps = list(range(500, 3000, 500))
 #it = jennings_newman(ps, (200+460))

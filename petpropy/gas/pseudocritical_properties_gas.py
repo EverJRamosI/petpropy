@@ -46,7 +46,7 @@ def mathews_roland_correlation_c7(m_C7: float|int, gamma_c7: float) -> dict[str,
     Ppc_C7 = 1188 - 431*log10((m_C7 - 61.1)) + (2319 - 852*log10((m_C7 - 53.71)))*(gamma_c7 - 0.8)
     Tpc_C7 = 608 + 364*log10((m_C7 - 71.2)) + ((2450*log10(m_C7)) - 3800)*(log10(gamma_c7))
     
-    return {"PpcC7": round(Ppc_C7, 5), "TpcC7": round(Tpc_C7, 5)}
+    return {"PpcC7": Ppc_C7, "TpcC7": Tpc_C7}
 
 def sutton(gamma_gas: float, *, yCO2: float=0, yH2S: float=0, yN2: float=0) -> list[float]:
     """These are equations for determining Ppc and Tpc for Sutton R.P.\n

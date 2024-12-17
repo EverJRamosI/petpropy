@@ -48,7 +48,7 @@ def rho_water_equation(Bw: float, *, S: int=10000) -> float:
     
     rho_w = (62.4*gamma_w) / Bw
     
-    return round(rho_w, 5)
+    return rho_w
 
 @vectorize_decorator
 def mccain(Bw: float, *, S: int=10000) -> float:
@@ -67,7 +67,7 @@ def mccain(Bw: float, *, S: int=10000) -> float:
     
     rho_w = rho_w1/Bw
     
-    return round(rho_w, 5)
+    return rho_w
 
 
 #print('rho', rho_water_basic(1.02806, S=20000))

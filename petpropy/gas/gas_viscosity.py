@@ -49,8 +49,8 @@ def lee_gonzalez_eakin(P: float|int, T: float|int, Mg: float|int, z: float) -> f
     
     rho_g = 1.4935e-3 * ((P * Mg)/(z * T))
     
-    mu_g = round((K * exp(X*(rho_g**Y)))/(10**4), 7)
+    mu_g = (K * exp(X*(rho_g**Y)))/(10**4)
     
-    return float(mu_g)
+    return mu_g
 
 

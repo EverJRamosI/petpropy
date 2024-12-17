@@ -54,7 +54,7 @@ def beal_muod(T: float|int, gamma_api: float|int) -> float:
     """    
     a = 10**(0.43 + (8.33/gamma_api))
     mu_od = (0.32 + ((1.8e7)/(gamma_api**4.53))) * ((360/((T-460)+200))**a)
-    return round(mu_od, 7)
+    return mu_od
 
 @vectorize_decorator
 def beggs_robinson_muod(T: float|int, gamma_api: float|int) -> float:
@@ -72,7 +72,7 @@ def beggs_robinson_muod(T: float|int, gamma_api: float|int) -> float:
     x = y*((T-460)**(-1.163))
     mu_od = (10**x) - 1
     
-    return round(mu_od, 7)
+    return mu_od
 
 @vectorize_decorator
 def glaso_muod(T: float|int, gamma_api: float|int) -> float:
@@ -89,7 +89,7 @@ def glaso_muod(T: float|int, gamma_api: float|int) -> float:
     
     mu_od = 3.141e10 * ((T-460)**(-3.444)) * ((log10(gamma_api))**((10.313*log10(T-460))-36.447))
     
-    return round(mu_od, 7)
+    return mu_od
 
 @vectorize_decorator
 def egbogad_muod(T: float|int, gamma_api: float|int) -> float:
@@ -109,7 +109,7 @@ def egbogad_muod(T: float|int, gamma_api: float|int) -> float:
     C = 10**B
     mu_od = C -1
     
-    return round(mu_od, 7)
+    return mu_od
 
 @vectorize_decorator
 def kartoatmodjo_schmidt_muod(T: float|int, gamma_api: float|int) -> float:
@@ -125,7 +125,7 @@ def kartoatmodjo_schmidt_muod(T: float|int, gamma_api: float|int) -> float:
     from math import log10
     mu_od = 16.0e8 * ((T-460)**(-2.8177)) * ((log10(gamma_api))**((5.7526*log10(T-460))-26.9718))
     
-    return round(mu_od, 7)
+    return mu_od
 
 @vectorize_decorator
 def chew_connally_muob(Rs: float, mu_od: float) -> float:
@@ -142,7 +142,7 @@ def chew_connally_muob(Rs: float, mu_od: float) -> float:
     b = (0.68/(10**(8.62e-5*Rs))) + (0.25/(10**(1.1e-3*Rs))) + (0.062/(10**(3.74e-3*Rs)))
     mu_ob = A * (mu_od**b)
     
-    return round(mu_ob, 7)
+    return mu_ob
 
 @vectorize_decorator
 def beggs_robinson_muob(Rs: float, mu_od: float) -> float:
@@ -159,7 +159,7 @@ def beggs_robinson_muob(Rs: float, mu_od: float) -> float:
     b = 5.44 * ((Rs + 150)**(-0.338))
     mu_ob = a * (mu_od**b)
     
-    return round(mu_ob, 7)
+    return mu_ob
 
 @vectorize_decorator
 def kartoatmodjo_schmidt_muob(Rs: float, mu_od: float) -> float:
@@ -176,7 +176,7 @@ def kartoatmodjo_schmidt_muob(Rs: float, mu_od: float) -> float:
     A = (0.2001 + (0.8428 * (10**((-0.000845)*Rs)))) * (mu_od**(0.43 + (0.5165*b)))
     mu_ob = (-0.06821) + (0.9824*A) + (40.34e-5*(A**2))
     
-    return round(mu_ob, 7)
+    return mu_ob
 
 @vectorize_decorator
 def beal_muo(P: float|int, Pb: float|int, mu_ob: float) -> float:
@@ -192,7 +192,7 @@ def beal_muo(P: float|int, Pb: float|int, mu_ob: float) -> float:
     """    
     mu_o = (((0.024*(mu_ob**1.6))+(0.038*(mu_ob**0.56)))*(0.001*(P-Pb))) + mu_ob
     
-    return round(mu_o, 7)
+    return mu_o
 
 @vectorize_decorator
 def vazquez_beggs_muo(P: float|int, Pb: float|int, mu_ob: float) -> float:
@@ -211,7 +211,7 @@ def vazquez_beggs_muo(P: float|int, Pb: float|int, mu_ob: float) -> float:
     m = 2.6*(P**1.187)*exp((-11.513)-(8.98e-5*P))
     mu_o = mu_ob * ((P/Pb)**m)
     
-    return round(mu_o, 7)
+    return mu_o
 
 @vectorize_decorator
 def kartoatmodjo_schmidt_muo(P: float|int, Pb: float|int, mu_ob: float) -> float:
@@ -227,7 +227,7 @@ def kartoatmodjo_schmidt_muo(P: float|int, Pb: float|int, mu_ob: float) -> float
     """ 
     mu_o = (1.00081*mu_ob) + (1.127e-3*(P-Pb)*((-65.17e-4*(mu_ob**1.8148))+(0.038*(mu_ob**1.59))))
     
-    return round(mu_o, 7)
+    return mu_o
 
 @vectorize_decorator
 def mu_oil(P: float|int, T: float|int, gamma_api: float|int, Rs: float, *, Pb: float|int, model_uod: str='Karto', model_uob: str='Karto', model_uo: str='Karto') -> float:

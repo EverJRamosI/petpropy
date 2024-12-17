@@ -55,9 +55,9 @@ def vazquez_beggs(P: float|int, T: float|int, Pb: float|int, Bo: float, Rs: floa
         from math import exp, log
         A = (1e-5)*((-1433)+(5*Rs)+(17.2*(T-460))-(1180*gamma_gas)+(12.61*gamma_api))
         rho_o = rho_ob*exp((-A)*log(P/Pb))
-        return round(rho_o, 5)
+        return rho_o
     
-    return round(rho_ob, 5)
+    return rho_ob
 
 @vectorize_decorator
 def petrosky_farshad(P: float|int, T: float|int, Pb: float|int, Bo: float, Rs: float, gamma_gas: float, gamma_api: float|int) -> float:
@@ -83,9 +83,9 @@ def petrosky_farshad(P: float|int, T: float|int, Pb: float|int, Bo: float, Rs: f
         from math import exp
         A = (4.1646e-7*(Rs**0.69357))*(gamma_gas**0.1885)*(gamma_api**0.3272)*((T-460)**0.6729)
         rho_o = rho_ob * exp(A*((P**0.4094)-(Pb**0.4094)))
-        return round(rho_o, 5)
+        return rho_o
     
-    return round(rho_ob, 5)
+    return rho_ob
 
 @vectorize_decorator
 def ahmed(P: float|int, Pb: float|int, Bo: float, Rs: float, gamma_gas: float, gamma_api: float|int) -> float:
@@ -110,9 +110,9 @@ def ahmed(P: float|int, Pb: float|int, Bo: float, Rs: float, gamma_gas: float, g
         from math import exp
         B = -(4.588893+(0.025999*Rs))**(-1)
         rho_o = rho_ob*exp(B*(exp(-0.00018473*P)-exp(-0.00018473*Pb)))
-        return round(rho_o, 5)
+        return rho_o
     
-    return round(rho_ob, 5)
+    return rho_ob
 
 @vectorize_decorator
 def standing(T: float|int, Rs: float, gamma_gas: float, gamma_api: float|int) -> float:
@@ -131,7 +131,7 @@ def standing(T: float|int, Rs: float, gamma_gas: float, gamma_api: float|int) ->
     
     rho_o = ((62.4*gamma_oil)+(0.0136*Rs*gamma_gas)) / (0.972+(0.000147*(((Rs*((gamma_gas/gamma_oil)**0.5))+(1.25*(T-460)))**1.175)))
     
-    return round(rho_o, 5)
+    return rho_o
 
 @vectorize_decorator
 def rho_o_basic(P: float|int, Pb: float|int, Bo: float, Rs: float, gamma_api: float|int, co: float) -> float:
@@ -160,9 +160,9 @@ def rho_o_basic(P: float|int, Pb: float|int, Bo: float, Rs: float, gamma_api: fl
     if P > Pb:
         from math import exp
         rho_o = rho_ob * exp(co*(Pb-P))
-        return round(rho_o, 5)
+        return rho_o
     
-    return round(rho_ob, 5)
+    return rho_ob
 
 
 # import matplotlib.pyplot as plt

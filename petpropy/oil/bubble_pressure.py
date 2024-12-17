@@ -55,9 +55,9 @@ def standing(R_sb: float, gamma_gas: float, T: float|int, gamma_api: float|int, 
         c_H2S = 1 - ((0.9035+(0.0015*gamma_api))*y_H2S) + ((0.019*(45-gamma_api))*(y_H2S**2))
         Pb_c = Pb*c_N2*c_CO2*c_H2S
         
-        return round(Pb_c, 5)
+        return Pb_c
         
-    return round(Pb, 5)
+    return Pb
 
 def lasater(R_sb: float, gamma_gas: float, T: float|int, gamma_api: float|int, *, y_N2: float=0, y_CO2: float=0, y_H2S: float=0) -> float:
     """This is a correlation for determining the Bubble Point Pressure, through Lasater J.A.\n
@@ -101,9 +101,9 @@ def lasater(R_sb: float, gamma_gas: float, T: float|int, gamma_api: float|int, *
         c_H2S = 1 - ((0.9035+(0.0015*gamma_api))*y_H2S) + ((0.019*(45-gamma_api))*(y_H2S**2))
         Pb_c = Pb*c_N2*c_CO2*c_H2S
         
-        return round(Pb_c, 5)
+        return Pb_c
     
-    return round(Pb, 5)
+    return Pb
 
 def vazquez_beggs(R_sb: float, gamma_gas: float, T: float|int, gamma_api: float|int, *, P_sp: float=0, T_sp: float=0, y_N2: float=0, y_CO2: float=0, y_H2S: float=0) -> float:
     """This is a correlation for determining the Bubble Point Pressure, through Vazquez M.E. & Beggs H.D.\n
@@ -150,9 +150,9 @@ def vazquez_beggs(R_sb: float, gamma_gas: float, T: float|int, gamma_api: float|
         c_H2S = 1 - ((0.9035+(0.0015*gamma_api))*y_H2S) + ((0.019*(45-gamma_api))*(y_H2S**2))
         Pb_c = Pb*c_N2*c_CO2*c_H2S
         
-        return round(Pb_c, 5)
+        return Pb_c
     
-    return round(Pb, 5)
+    return Pb
 
 def glaso(R_sb: float, gamma_gas: float, T: float|int, gamma_api: float|int, *, y_N2: float=0, y_CO2: float=0, y_H2S: float=0) -> float:
     """This is a correlation for determining the Bubble Point Pressure, through Glaso O.\n
@@ -184,9 +184,9 @@ def glaso(R_sb: float, gamma_gas: float, T: float|int, gamma_api: float|int, *, 
         c_H2S = 1 - ((0.9035+(0.0015*gamma_api))*y_H2S) + ((0.019*(45-gamma_api))*(y_H2S**2))
         Pb_c = Pb*c_N2*c_CO2*c_H2S
         
-        return round(Pb_c, 5)
+        return Pb_c
     
-    return round(Pb, 5)
+    return Pb
 
 def total(R_sb: float, gamma_gas: float, T: float|int, gamma_api: float|int, *, y_N2: float=0, y_CO2: float=0, y_H2S: float=0) -> float:
     """This is a correlation for determining the Bubble Point Pressure, through TOTAL C.F.P. J.A.\n
@@ -230,9 +230,9 @@ def total(R_sb: float, gamma_gas: float, T: float|int, gamma_api: float|int, *, 
         c_H2S = 1 - ((0.9035+(0.0015*gamma_api))*y_H2S) + ((0.019*(45-gamma_api))*(y_H2S**2))
         Pb_c = Pb*c_N2*c_CO2*c_H2S
         
-        return round(Pb_c, 5)
+        return Pb_c
     
-    return round(Pb, 5)
+    return Pb
 
 def almarhoun(R_sb: float, gamma_gas: float, T: float|int, gamma_api: float|int, *, y_N2: float=0, y_CO2: float=0, y_H2S: float=0) -> float:
     """This is a correlation for determining the Bubble Point Pressure, through Al-Marhoun M.A.\n
@@ -262,9 +262,9 @@ def almarhoun(R_sb: float, gamma_gas: float, T: float|int, gamma_api: float|int,
         c_H2S = 1 - ((0.9035+(0.0015*gamma_api))*y_H2S) + ((0.019*(45-gamma_api))*(y_H2S**2))
         Pb_c = Pb*c_N2*c_CO2*c_H2S
         
-        return round(Pb_c, 5)
+        return Pb_c
     
-    return round(Pb, 5)
+    return Pb
 
 def dokla_osman(R_sb: float, gamma_gas: float, T: float|int, gamma_api: float|int, *, y_N2: float=0, y_CO2: float=0, y_H2S: float=0) -> float:
     """This is a correlation for determining the Bubble Point Pressure, through Dokla M.E. & Osman M.E.\n
@@ -294,9 +294,9 @@ def dokla_osman(R_sb: float, gamma_gas: float, T: float|int, gamma_api: float|in
         c_H2S = 1 - ((0.9035+(0.0015*gamma_api))*y_H2S) + ((0.019*(45-gamma_api))*(y_H2S**2))
         Pb_c = Pb*c_N2*c_CO2*c_H2S
         
-        return round(Pb_c, 5)
+        return Pb_c
     
-    return round(Pb, 5)
+    return Pb
 
 def petrosky_farshad(R_sb: float, gamma_gas: float, T: float|int, gamma_api: float|int, *, y_N2: float=0, y_CO2: float=0, y_H2S: float=0) -> float:
     """This is a correlation for determining the Bubble Point Pressure, through Petrosky G.E. & Farshad F.F.\n
@@ -326,9 +326,9 @@ def petrosky_farshad(R_sb: float, gamma_gas: float, T: float|int, gamma_api: flo
         c_H2S = 1 - ((0.9035+(0.0015*gamma_api))*y_H2S) + ((0.019*(45-gamma_api))*(y_H2S**2))
         Pb_c = Pb*c_N2*c_CO2*c_H2S
         
-        return round(Pb_c, 5)
+        return Pb_c
     
-    return round(Pb, 5)
+    return Pb
 
 def kartoatmodjo_schmidt(R_sb: float, gamma_gas: float, T: float|int, gamma_api: float|int, *, P_sp: float=0, T_sp: float=0, y_N2: float=0, y_CO2: float=0, y_H2S: float=0):
     """This is a correlation for determining the Bubble Point Pressure, through Kartoatmodjo T. & Schimidt Z.\n
@@ -377,9 +377,9 @@ def kartoatmodjo_schmidt(R_sb: float, gamma_gas: float, T: float|int, gamma_api:
         c_H2S = 1 - ((0.9035+(0.0015*gamma_api))*y_H2S) + ((0.019*(45-gamma_api))*(y_H2S**2))
         Pb_c = Pb*c_N2*c_CO2*c_H2S
         
-        return round(Pb_c, 5)
+        return Pb_c
     
-    return round(Pb, 5)
+    return Pb
 
 # print("Standing", standing(675, 0.95, (460+180), 31, y_CO2=0.2, y_H2S=0.1))
 # print("Lastar", lasater(675, 0.95, (460+180), 31, y_CO2=0.2, y_H2S=0.1))

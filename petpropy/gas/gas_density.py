@@ -43,9 +43,9 @@ def rho_gas(P: float|int, T: float|int, gamma_g: float|int, z: float) -> float:
     #### Returns:
         rho_g (float): Density of Gas [lbs/ft^3]
     """    
-    rho_gas = round(2.70 * ((P * gamma_g)/(z * T)), 7)
+    rho_gas = 2.70 * ((P * gamma_g)/(z * T))
     
-    return float(rho_gas)
+    return rho_gas
 
 
 

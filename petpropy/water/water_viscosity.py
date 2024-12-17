@@ -46,7 +46,7 @@ def van_wingen(T: float|int) -> float:
     
     mu_w = exp(1.003 - (1.479e-2*T) + (1.982e-5*(T**2)))
     
-    return round(mu_w, 6)
+    return mu_w
 
 @vectorize_decorator
 def matthews_russel(P: float|int, T: float|int, *, S: int=10000) -> float:
@@ -71,7 +71,7 @@ def matthews_russel(P: float|int, T: float|int, *, S: int=10000) -> float:
     
     mu_w = mu_w1*f
     
-    return round(mu_w, 6)
+    return mu_w
 
 @vectorize_decorator
 def mccain(P: float|int, T: float|int, *, S: int=10000) -> float:
@@ -95,7 +95,7 @@ def mccain(P: float|int, T: float|int, *, S: int=10000) -> float:
     
     mu_w = (0.9994 + (4.0295e-5*P) + (3.1062e-9*(P**2))) * mu_w1
     
-    return round(mu_w, 6)
+    return mu_w
 
 @vectorize_decorator
 def mccoy(T: float|int, *, S: int=10000) -> float:
@@ -116,7 +116,7 @@ def mccoy(T: float|int, *, S: int=10000) -> float:
     
     mu_w = (1 - (1.87e-3*(S**0.5)) + (2.18e-4*(S**2.5)) + ((T**0.5)-(1.35e-2*T))*((2.76e-3*S)-(3.44e-4*(S**1.5)))) * mu_wp
     
-    return round(mu_w, 6)
+    return mu_w
 
 # temperature = [150, 250, 350, 400]
 # t = [t+460 for t in temperature]

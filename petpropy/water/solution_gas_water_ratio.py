@@ -50,7 +50,7 @@ def culberson_macketta(P: float|int, T: float|int, *, S: int=10000) -> float:
     
     Rsw = (10**((-0.0840655)*S*((T-460)**(-0.285854)))) * R_swp
     
-    return round(Rsw, 4)
+    return Rsw
 
 @vectorize_decorator
 def mccoy(P: float|int, T: float|int, *, S: int=10000) -> float:
@@ -74,7 +74,7 @@ def mccoy(P: float|int, T: float|int, *, S: int=10000) -> float:
     
     Rsw = (1 - ((0.0753-(1.73e-4*(T-460)))*S)) * R_swp
     
-    return round(Rsw, 4)
+    return Rsw
 
 #print('culberson', culberson_macketta(5000, (200+460), S=20000))
 #print('mccoy', mccoy(5000, (200+460), S=20000))

@@ -89,10 +89,9 @@ def papay(P: float, T: float, Ppc: float, Tpc: float) -> float:
     #### Returns:
         z (float): Gas Compressibility Factor [dimensionless]
     """    
-    P_pr = round(P / Ppc, 5)
-    T_pr = round(T / Tpc, 5)
-    z = round(1 - ((3.52*P_pr)/(10**(0.9813*T_pr))) + ((0.274*(P_pr**2))/(10**(0.8157*T_pr))), 5)
-    return float(z) 
+    P_pr = P / Ppc
+    T_pr = T / Tpc
+    return 1 - ((3.52*P_pr)/(10**(0.9813*T_pr))) + ((0.274*(P_pr**2))/(10**(0.8157*T_pr)))
 
 @vectorize_decorator
 def brill_beggs(P: float, T: float, Ppc: float, Tpc: float) -> float:
@@ -109,8 +108,8 @@ def brill_beggs(P: float, T: float, Ppc: float, Tpc: float) -> float:
     """  
     import numpy as np
     
-    P_pr = round(P / Ppc, 5)
-    T_pr = round(T / Tpc, 5)
+    P_pr = P / Ppc
+    T_pr = T / Tpc
     
     A = 1.39 * (T_pr-0.92)**0.5 - 0.36 * T_pr - 0.10
     B = ((0.62-(0.23*T_pr))*P_pr) + (((0.066/(T_pr-0.86))-0.037)*(P_pr**2)) + ((0.32/(10**(9*(T_pr-1))))*(P_pr**6))
@@ -121,11 +120,11 @@ def brill_beggs(P: float, T: float, Ppc: float, Tpc: float) -> float:
         exp_B = np.exp(B)
         
     if np.isinf(exp_B):
-        z = round(A + (C*(P_pr**D)), 5)
+        z = A + (C*(P_pr**D))
     else: 
-        z = round(A + ((1-A)/(np.exp(B))) + (C*(P_pr**D)), 5)
+        z = A + ((1-A)/(np.exp(B))) + (C*(P_pr**D))
         
-    return float(z)
+    return z
 
 @vectorize_decorator
 def hall_yarborough(P: float, T: float, Ppc: float, Tpc: float) -> float:
@@ -153,54 +152,26 @@ def hall_yarborough(P: float, T: float, Ppc: float, Tpc: float) -> float:
         
     y1 = 0.00001
     tolerance = 1e-5
-    max_iterations = 100
+    max_iterations = 1000
     iteration = 0
     
     while iteration < max_iterations:
         
-        try:
-            
-            F1 = -A * P_pr + ((y1 + (y1**2) + (y1**3) - y1**4) / ((1 - y1)**3)) - B * (y1**2) + C * (y1**D)
-            dF = ((1 + 4 * y1 + 4 * (y1**2) - 4 * (y1**3) + (y1**4)) / ((1 - y1)**4)) - 2 * B * y1 + C * D * (y1**(D - 1))
-            y1 -= F1 / dF
-            
-            if np.isnan(F1) or np.isinf(F1) or np.isnan(dF) or np.isinf(dF):
-                raise ValueError("Numerical issue encountered")
-            
-            y1_new = y1 - F1 / dF
-            
-            if y1_new <= 0 or np.isnan(y1_new) or np.isinf(y1_new):
-                raise ValueError("Invalid y1 value encountered")
-
-            y1 = y1_new
-            
-        except (OverflowError, ValueError):
-            
-            y1 = 0.5
-            tolerance = 1e-3
-            max_iterations = 100
-            iteration = 0
-            
-            while iteration < max_iterations:
-                
-                F1 = -A * P_pr + ((y1 + (y1**2) + (y1**3) - y1**4) / ((1 - y1)**3)) - B * (y1**2) + C * (y1**D)
-                dF = ((1 + 4 * y1 + 4 * (y1**2) - 4 * (y1**3) + (y1**4)) / ((1 - y1)**4)) - 2 * B * y1 + C * D * (y1**(D - 1))
-                y1 -= F1 / dF
-                            
-                if abs(F1) < tolerance:
-                    break
-                
-                iteration += 1
-            
-            
+        F1 = -A * P_pr + ((y1 + (y1**2) + (y1**3) - y1**4) / ((1 - y1)**3)) - B * (y1**2) + C * (y1**D)
+        dF = ((1 + 4 * y1 + 4 * (y1**2) - 4 * (y1**3) + (y1**4)) / ((1 - y1)**4)) - 2 * B * y1 + C * D * (y1**(D - 1))
+        
+        y1_new = y1 - F1 / dF
+        
+        y1 = y1_new
+        
         if abs(F1) < tolerance:
             break
         
         iteration += 1
+        
+    z = (0.06125 * P_pr * t * np.exp(-1.2 * ((1 - t) ** 2))) / y1
     
-    z = round((0.06125 * P_pr * t * np.exp(-1.2 * ((1 - t) ** 2))) / y1, 5)
-    
-    return float(z)
+    return z
 
 @vectorize_decorator
 def gopal(P: float, T: float, Ppc: float, Tpc: float) -> float:
@@ -215,8 +186,8 @@ def gopal(P: float, T: float, Ppc: float, Tpc: float) -> float:
     #### Returns:
         z (float): Gas Compressibility Factor [dimensionless]
     """  
-    P_pr = round(P / Ppc, 5)
-    T_pr = round(T / Tpc, 5)
+    P_pr = P / Ppc
+    T_pr = T / Tpc
     
     if 0.2 <= P_pr <= 1.2:
         if 1.05 <= T_pr <= 1.2:
@@ -249,9 +220,7 @@ def gopal(P: float, T: float, Ppc: float, Tpc: float) -> float:
         if 1.05 <= T_pr <= 3.0:
             z = (P_pr * ((0.711 + (3.66 * T_pr))**(-1.4667))) - ((1.637)/((0.319 * T_pr) + 0.522)) + 2.071
     
-    z = round(z, 5)
-    
-    return float(z)
+    return z
 
 @vectorize_decorator
 def dranchuk_abou_kassem(P: float, T: float, Ppc: float, Tpc: float) -> float:

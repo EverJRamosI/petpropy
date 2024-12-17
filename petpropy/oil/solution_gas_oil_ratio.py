@@ -53,12 +53,12 @@ def standing(P: float|int, T: float|int, gamma_gas: float, gamma_api: float|int,
         P = Pb
         Rs = gamma_gas * ((((P/18.2)+1.4)*(10**((0.0125*gamma_api)-(0.00091*(T-460)))))**1.2048)
         
-        return round(Rs, 3)
+        return Rs
     
     if P < Pb:
         Rs = gamma_gas * ((((P/18.2)+1.4)*(10**((0.0125*gamma_api)-(0.00091*(T-460)))))**1.2048)
     
-        return round(Rs, 3)
+        return Rs
 
 @vectorize_decorator
 def lasater(P: float|int, T: float|int, gamma_gas: float, gamma_api: float|int, *, Pb: float|int) -> float:
@@ -93,7 +93,7 @@ def lasater(P: float|int, T: float|int, gamma_gas: float, gamma_api: float|int, 
         
         Rs = (132755*gamma_oil*y_gas) / (m_oil*(1-y_gas))
     
-        return round(Rs, 3)
+        return Rs
     
     if P < Pb:
         Pb = P
@@ -109,7 +109,7 @@ def lasater(P: float|int, T: float|int, gamma_gas: float, gamma_api: float|int, 
             m_oil = 73110 / (gamma_api**1.562)
         Rs = (132755*gamma_oil*y_gas) / (m_oil*(1-y_gas))
     
-        return round(Rs, 3)
+        return Rs
 
 @vectorize_decorator
 def vazquez(P: float|int, T: float|int, gamma_gas: float, gamma_api: float|int, *, Pb: float|int, P_sp: float=0, T_sp: float=0) -> float:
@@ -146,7 +146,7 @@ def vazquez(P: float|int, T: float|int, gamma_gas: float, gamma_api: float|int, 
         else:
             Rs = C1 * gamma_gas * (P**C2) * exp((C3*gamma_api)/(T))
     
-        return round(Rs, 3)
+        return Rs
     
     if P < Pb:
         if P_sp != 0 and T_sp != 0:
@@ -155,7 +155,7 @@ def vazquez(P: float|int, T: float|int, gamma_gas: float, gamma_api: float|int, 
         else:
             Rs = C1 * gamma_gas * (P**C2) * exp((C3*gamma_api)/(T))
     
-        return round(Rs, 3)
+        return Rs
 
 @vectorize_decorator
 def glaso(P: float|int, T: float|int, gamma_gas: float, gamma_api: float|int, *, Pb: float|int) -> float:
@@ -178,13 +178,13 @@ def glaso(P: float|int, T: float|int, gamma_gas: float, gamma_api: float|int, *,
         F = 10**(2.8869 - ((14.1811-(3.3093*log10(P)))**0.5))
         Rs = gamma_gas * ((F*((gamma_api**0.989) / ((T-460)**0.172)))**1.2255)
         
-        return round(Rs, 3)
+        return Rs
     
     if P < Pb:
         F = 10**(2.8869 - ((14.1811-(3.3093*log10(P)))**0.5))
         Rs = gamma_gas * ((F*((gamma_api**0.989) / ((T-460)**0.172)))**1.2255)
     
-        return round(Rs, 3)
+        return Rs
 
 @vectorize_decorator
 def total(P: float|int, T: float|int, gamma_gas: float, gamma_api: float|int, *, Pb: float|int) -> float:
@@ -220,12 +220,12 @@ def total(P: float|int, T: float|int, gamma_gas: float, gamma_api: float|int, *,
         P = Pb
         Rs = gamma_gas * (((P/C1)*(10**((C2*gamma_api)-(C3*(T-460)))))**C4)
     
-        return round(Rs, 3)
+        return Rs
     
     if P < Pb:
         Rs = gamma_gas * (((P/C1)*(10**((C2*gamma_api)-(C3*(T-460)))))**C4)
     
-        return round(Rs, 3)
+        return Rs
 
 @vectorize_decorator
 def almarhoun(P: float|int, T: float|int, gamma_gas: float, gamma_api: float|int, *, Pb: float|int) -> float:
@@ -247,12 +247,12 @@ def almarhoun(P: float|int, T: float|int, gamma_gas: float, gamma_api: float|int
         P = Pb
         Rs = (185.84321 * P * (gamma_gas**1.87784) * (gamma_oil**(-3.1437) * (T**(-1.32657))))**1.3984
     
-        return round(Rs, 3)
+        return Rs
     
     if P < Pb:
         Rs = (185.84321 * P * (gamma_gas**1.87784) * (gamma_oil**(-3.1437) * (T**(-1.32657))))**1.3984
     
-        return round(Rs, 3)
+        return Rs
 
 @vectorize_decorator
 def dokla_osman(P: float|int, T: float|int, gamma_gas: float, gamma_api: float|int, *, Pb: float|int) -> float:
@@ -274,12 +274,12 @@ def dokla_osman(P: float|int, T: float|int, gamma_gas: float, gamma_api: float|i
         P = Pb
         Rs = (0.11956e-3 * P * (gamma_gas**1.01049) * (gamma_oil**(-0.107991)) * (T**0.952584))**1.3811
     
-        return round(Rs, 3)
+        return Rs
     
     if P < Pb:
         Rs = (0.11956e-3 * P * (gamma_gas**1.01049) * (gamma_oil**(-0.107991)) * (T**0.952584))**1.3811
     
-        return round(Rs, 3)
+        return Rs
 
 @vectorize_decorator
 def petrosky_farshad(P: float|int, T: float|int, gamma_gas: float, gamma_api: float|int, *, Pb: float|int) -> float:
@@ -299,12 +299,12 @@ def petrosky_farshad(P: float|int, T: float|int, gamma_gas: float, gamma_api: fl
         P = Pb
         Rs = ((gamma_gas**0.8439) * ((P/112.727)+12.34) * (10**((7.916e-4*(gamma_api**1.5410))-(4.561e-5*((T-460)**1.3911)))))**1.73184
     
-        return round(Rs, 3)
+        return Rs
     
     if P < Pb:
         Rs = ((gamma_gas**0.8439) * ((P/112.727)+12.34) * (10**((7.916e-4*(gamma_api**1.5410))-(4.561e-5*((T-460)**1.3911)))))**1.73184
     
-        return round(Rs, 3)
+        return Rs
 
 @vectorize_decorator
 def kartoatmodjo_schmidt(P: float|int, T: float|int, gamma_gas: float, gamma_api: float|int, *, Pb: float|int, P_sp: float=0, T_sp: float=0) -> float:
@@ -343,7 +343,7 @@ def kartoatmodjo_schmidt(P: float|int, T: float|int, gamma_gas: float, gamma_api
         else:
             Rs = C1 * (gamma_gas**C2) * (P**(1/C4)) * (10**((C3*gamma_api)/(T)))
     
-        return round(Rs, 3)
+        return Rs
     
     if P < Pb:
         if P_sp != 0 and T_sp != 0:
@@ -352,7 +352,7 @@ def kartoatmodjo_schmidt(P: float|int, T: float|int, gamma_gas: float, gamma_api
         else:
             Rs = C1 * (gamma_gas**C2) * (P**(1/C4)) * (10**((C3*gamma_api)/(T)))
     
-        return round(Rs, 3)
+        return Rs
 
 
 

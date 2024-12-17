@@ -44,7 +44,7 @@ def gas_weight_molecular(m_C7: float=0) -> float:
     
     m_gas = sum(m_gi[componente] * y_gi[componente] for componente in comp_mix)
     
-    return float(m_gas)
+    return m_gas
 
 def gas_weight_molecular_df(df_data: pd.DataFrame, m_C7: float=0) -> float:
     """it gets of the Weight Molecular Gas through the DataFrame. If you have the Weight Molecular C+7,\n
@@ -67,6 +67,6 @@ def gas_weight_molecular_df(df_data: pd.DataFrame, m_C7: float=0) -> float:
     
     m_gas = sum(m_gi[component] * y_gi[component] for component in mix)
     
-    return float(round(m_gas, 5))
+    return m_gas
 
 

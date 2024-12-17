@@ -40,20 +40,21 @@ def baker_swedloff(P: float|int, T: float|int, gamma_api: float|int) -> float:
         sigma_o (float): Gas-Oil Interfacial Tension [dynes/cm]
     """    
     F = 1 - (0.024*(P**0.45))
+    sigma_68 = 39 - (0.2571*gamma_api)
+    sigma_100 = 37.5 - (0.2571*gamma_api)
     
     if (T-460) <= 68:
-        sigma_68 = 39 - (0.2571*gamma_api)
-        return sigma_68*F
+        sigma = sigma_68*F
     elif (T-460) >= 100: 
-        sigma_100 = 37.5 - (0.2571*gamma_api)
-        return sigma_100*F
+        sigma = sigma_100*F
     else:
-        sigma_68 = 39 - (0.2571*gamma_api)
-        sigma_100 = 37.5 - (0.2571*gamma_api)
         sigma_T = sigma_68 - ((((T-460) - 68)*(sigma_68-sigma_100))/32)
-        return sigma_T*F
+        sigma = sigma_T*F
     
-#import matplotlib.pyplot as plt
+    if sigma < 1:
+        sigma = 1
+    
+    return sigma 
 
 #presiones = list(range(500, 3000, 100))
 

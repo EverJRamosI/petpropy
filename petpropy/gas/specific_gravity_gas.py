@@ -32,6 +32,6 @@ def gamma_gas(m_gas: float) -> float:
     #### Returns:
         gamma_g (float): Specific Gravity Gas [fraction]
     """    
-    gamma_gas = round(m_gas / 28.96, 5)
-    return float(gamma_gas)
+    gamma_gas = m_gas / 28.96
+    return gamma_gas
 
